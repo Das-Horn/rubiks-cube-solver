@@ -14,7 +14,7 @@ impl Rubiks {
         let mut final_pos: Vec<Vec<i32>> = Vec::new();
 
         for i in 0..6 {
-            for _j in 0..8 {
+            for _j in 0..9 {
                 match i{
                     0=>temp_vec.push(0),
                     1=>temp_vec.push(1),
@@ -30,6 +30,23 @@ impl Rubiks {
         }
 
         return Rubiks { pos: final_pos };
+    }
+
+    // Printing Functions
+
+    pub fn print_layout(&mut self){
+        let mut count = 1;
+
+        for i in 0..self.pos.len(){
+            for j in 0..self.pos[i].len() {
+                print!("{}", self.pos[i][j]);
+                if (count % 3) == 0 {
+                    print!("\n");
+                }
+                count += 1;
+            }
+            print!("\n");
+        }
     }
 
     // Getters

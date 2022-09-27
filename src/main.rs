@@ -7,5 +7,7 @@ fn main() {
 
     let mut cube = Rubiks::new();
 
-    println!("{:?}" , cube.get_pos());
+    // println!("{:?}" , cube.get_pos());
+    // println!("\n\n");
+    cube.print_layout();
 }
