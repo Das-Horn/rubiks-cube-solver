@@ -9,5 +9,7 @@ fn main() {
 
     // println!("{:?}" , cube.get_pos());
     // println!("\n\n");
-    cube.print_layout();
+    // cube.print_layout();
+
+    cube.print_UV();
 }
