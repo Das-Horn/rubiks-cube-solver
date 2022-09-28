@@ -1,6 +1,8 @@
 mod rubiks;
+mod printer;
 
 use rubiks::Rubiks;
+
 
 fn main() {
     Rubiks::testing();
@@ -12,4 +14,6 @@ fn main() {
     // cube.print_layout();
 
     cube.print_UV();
+
+    printer::term::new();
 }
