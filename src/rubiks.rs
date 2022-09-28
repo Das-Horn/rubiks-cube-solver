@@ -86,6 +86,10 @@ impl Rubiks {
 
     //Rotational Methods
 
+    pub fn rotate_array(direction:bool) {
+        
+    }
+
     // Getters
 
     pub fn get_pos(&mut self) -> &Vec<Vec<i32>> {
