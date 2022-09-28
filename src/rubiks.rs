@@ -1,6 +1,6 @@
 pub struct Rubiks {
     pos: Vec<Vec<i32>>,
-    
+    col: Vec<String>,
 }
 
 impl Rubiks {
@@ -29,7 +29,15 @@ impl Rubiks {
             temp_vec.clear();
         }
 
-        return Rubiks { pos: final_pos };
+        //Colours
+
+        let mut default_colours = Vec::new();
+
+        default_colours.push(String::from("\x1b[38,05,205"));
+
+        return Rubiks { pos: final_pos,
+                        col: default_colours
+                    };
     }
 
     // Printing Functions
@@ -39,7 +47,7 @@ impl Rubiks {
 
         for i in 0..self.pos.len(){
             for j in 0..self.pos[i].len() {
-                print!("{}", self.pos[i][j]);
+                print!("\x1b[38;5;205m{} ", self.pos[i][j]);
                 if (count % 3) == 0 {
                     print!("\n");
                 }
@@ -47,7 +55,36 @@ impl Rubiks {
             }
             print!("\n");
         }
+        print!("\x1b[0m");
     }
+
+    pub fn print_UV(&mut self) {
+                self.print_long(4);
+                self.print_short();
+                self.print_long(5);
+    }
+
+    fn print_short(&mut self) {
+        for i in 0..3 {
+            for j in 0..12 {
+                print!("{} ", self.pos[j / 3][((j % 3)) * i]);
+            }
+            print!("\n");
+        }
+    }
+
+    fn print_long(&mut self, current_index:usize) {
+        for i in 0..3 {
+            print!("            ");
+            print!("{} {} {} ", self.pos[current_index][i * 3 + 0],
+                                self.pos[current_index][i * 3 + 1],
+                                self.pos[current_index][i * 3 + 2]);
+            print!("   \n");
+
+        }
+    }
+
+    //Rotational Methods
 
     // Getters
 
